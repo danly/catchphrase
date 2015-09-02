@@ -7,6 +7,9 @@ var app = express(),
     views = path.join(__dirname, "views");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("bower_components"));
+app.use(express.static("public"));
+
 
 app.get("/", function (req, res){
   var homePath = path.join(views, "home.html")
