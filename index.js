@@ -12,6 +12,15 @@ app.use(express.static("public"));
 
 
 app.get("/", function (req, res){
+  console.log(req.headers);
+  var cookieStr = req.get("Cookie");
+  var count = 0;
+  if (cookieStr) {
+    count = parseInt(cookieStr.split("=")[1]);
+  }
+  count += 1;
+  res.cookie("count", count);
+
   var homePath = path.join(views, "home.html")
   res.sendFile(homePath)
 });
@@ -21,8 +30,6 @@ app.get("/words", function (req, res){
     res.send(words);
   })
 })
-
-
 
 
 
