@@ -1,5 +1,6 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
+    cookieParser = require("cookie-parser"),
     path = require("path"),
     db = require("./models");
 
@@ -9,17 +10,21 @@ var app = express(),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("bower_components"));
 app.use(express.static("public"));
+app.use(cookieParser());
 
+var sessions = {};
+var guid = 0;
 
 app.get("/", function (req, res){
-  console.log(req.headers);
-  var cookieStr = req.get("Cookie");
+
+  //simple cookie counter for visits
+  console.log(req.cookies.count);
   var count = 0;
-  if (cookieStr) {
-    count = parseInt(cookieStr.split("=")[1]);
+  if (req.cookies.count){
+    count = parseInt(req.cookies.count)
   }
-  count += 1;
-  res.cookie("count", count);
+  count += 1
+  res.cookie("count", count)
 
   var homePath = path.join(views, "home.html")
   res.sendFile(homePath)
