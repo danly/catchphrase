@@ -12,10 +12,19 @@ function allWords() {
   })
 }
 
+function newWord() {
+  $("#newWord").on('submit', function (e) {
+    e.preventDefault()
+  })
+}
+
+
+
 
 
 
 $(function() {
   console.log("Ready!")
   allWords()
+  newWord()
 })

@@ -36,7 +36,9 @@ app.get("/words", function (req, res){
   })
 })
 
+// app.post("/words", function (req, res){
 
+// })
 
 
 

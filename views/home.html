@@ -20,7 +20,20 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 </head>
 <body>
-  <h1>List of Words!</h1>
+  <div class='jumbotron'>
+    <h1>List of Words!</h1>
+  </div>
+  
+  <form id="newWord">
+    <div>
+      <input type="text" name="word[word]" placeholder="Word">
+    </div>
+    <div>
+      <textarea name="word[def]" placeholder="Description"></textarea>
+    </div>
+    <button>Add Word</button>
+    <!-- <input type="submit" value="Add Word" /> -->
+  </form>
 
   <div id="wordsContainer"></div>
 
